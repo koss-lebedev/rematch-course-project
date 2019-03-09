@@ -1,4 +1,6 @@
 import { User } from '../common/types'
+import { RematchDispatch } from '@rematch/core'
+import { loadUsers } from '../common/api'
 
 type State = ReadonlyArray<User>
 
@@ -15,7 +17,13 @@ const model = {
       }
       return user
     })
-  }
+  },
+  effects: (dispatch: RematchDispatch) => ({
+    async load() {
+      const users = await loadUsers()
+      dispatch.users.loaded(users)
+    }
+  })
 }
 
 export default model
