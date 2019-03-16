@@ -22,6 +22,10 @@ const model = {
     async load() {
       const users = await loadUsers()
       dispatch.users.loaded(users)
+    },
+    toggleFollow(user: User) {
+      dispatch.users.followToggled(user)
+      dispatch.toasts.add(`You ${user.isFollowing ? 'unfollowed' : 'followed'} ${user.name.first} ${user.name.last}`)
     }
   })
 }

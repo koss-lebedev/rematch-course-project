@@ -5,12 +5,12 @@ import { RootState, RootDispatch } from '../../store'
 
 type UsersProps = ReturnType<typeof mapProps> & ReturnType<typeof mapDispatch>
 
-const Users: FC<UsersProps> = ({ users, load, followToggled }) => {
+const Users: FC<UsersProps> = ({ users, load, toggleFollow }) => {
   useEffect(() => {
     load()
   }, [])
 
-  return <UserList users={users} toggleFollow={followToggled} />
+  return <UserList users={users} toggleFollow={toggleFollow} />
 }
 
 const mapProps = (state: RootState) => ({
@@ -19,7 +19,7 @@ const mapProps = (state: RootState) => ({
 
 const mapDispatch = (dispatch: RootDispatch) => ({
   load: dispatch.users.load,
-  followToggled: dispatch.users.followToggled,
+  toggleFollow: dispatch.users.toggleFollow,
 })
 
 export default connect(mapProps, mapDispatch)(Users)

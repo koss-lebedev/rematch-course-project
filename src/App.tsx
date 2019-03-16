@@ -3,14 +3,14 @@ import { Provider } from 'react-redux'
 import GlobalStyles from './globalStyles'
 import Users from './containers/Users'
 import Header from './containers/Header'
-import ToastList from './components/ToastList'
+import Toasts from './containers/Toasts'
 import store from './store'
 
 const App = () => (
   <Provider store={store}>
     <Fragment>
       <GlobalStyles />
-      <ToastList toasts={[]} />
+      <Toasts />
       <Header />
       <Users />
     </Fragment>
